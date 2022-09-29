@@ -2,14 +2,14 @@
     import { onMount } from "svelte";
     import trianglify from "trianglify";
 
-    let innerHeight;
-    let innerWidth;
+    let outerHeight;
+    let outerWidth;
     let pattern_container;
 
     function draw_pattern() {
-        var height = innerHeight;
+        var height = outerHeight;
 
-        var width = innerWidth / 2;
+        var width = outerWidth / 2;
 
         // apply trianglify to convert the points to polygons and apply the color
         // gradient
@@ -31,13 +31,24 @@
     });
 </script>
 
-<svelte:window bind:innerHeight bind:innerWidth on:resize={draw_pattern}/>
+<svelte:window bind:outerHeight bind:outerWidth on:resize={draw_pattern} />
 
-<div bind:this={pattern_container} class="absolute hide lg:block" />
+<div bind:this={pattern_container} class="absolute hidden lg:block" />
 
 <style>
     div {
         z-index: -100;
-        clip-path: polygon(0 0, 40% 25%, 0 50%, 40% 75%, 0 100%, 40% 100%, 80% 75%, 40% 50%, 80% 25%, 40% 0);
+        clip-path: polygon(
+            0 0,
+            40% 25%,
+            0 50%,
+            40% 75%,
+            0 100%,
+            40% 100%,
+            80% 75%,
+            40% 50%,
+            80% 25%,
+            40% 0
+        );
     }
 </style>

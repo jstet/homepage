@@ -6,7 +6,8 @@
 </script>
 
 <svelte:head>
-  <link rel="icon" type="image/svg" href="favicon.svg" />
+    <title>Jonas Stettner</title>
+  <link rel="icon" type="image/svg" href="fav.svg" />
 </svelte:head>
 
 <SideArt />
