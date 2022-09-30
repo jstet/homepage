@@ -1,13 +1,15 @@
 <script>
     import { onMount } from "svelte";
+    import { doc_height } from "$lib/stores/doc_height.js";
     import trianglify from "trianglify";
 
-    let outerHeight;
     let outerWidth;
     let pattern_container;
 
+    let height = null;
+
     function draw_pattern() {
-        var height = outerHeight;
+        var height = $doc_height;
 
         var width = outerWidth / 2;
 
@@ -27,17 +29,22 @@
         pattern_container.appendChild(pattern1.toCanvas());
     }
     onMount(async () => {
-        draw_pattern();
+        height = $doc_height;
     });
+    $: if (height != null) {
+        draw_pattern();
+    }
+
+    $:console.log($doc_height)
 </script>
 
-<svelte:window bind:outerHeight bind:outerWidth on:resize={draw_pattern} />
+<svelte:window bind:outerWidth />
 
-<div bind:this={pattern_container} class="absolute hidden lg:block" />
+<div bind:this={pattern_container} class="absolute top-0 hidden lg:block" />
 
 <style>
     div {
-        z-index: -100;
+        z-index: 1;
         clip-path: polygon(
             0 0,
             40% 25%,

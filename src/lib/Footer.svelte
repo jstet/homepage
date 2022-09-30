@@ -1,10 +1,10 @@
 <script>
-    import GithubIcon from "./Icons/GithubIcon.svelte";
-    import TwitterIcon from "./Icons/TwitterIcon.svelte";
-    import MailIcon from "./Icons/MailIcon.svelte";
+    import GithubIcon from "./icons/GithubIcon.svelte";
+    import TwitterIcon from "./icons/TwitterIcon.svelte";
+    import MailIcon from "./icons/MailIcon.svelte";
 </script>
 
-<nav class="text-center py-3 bg-neutral-100 fixed bottom-0 w-full">
+<nav class="text-center py-3 bg-neutral-100 fixed bottom-0 w-full z-10">
     <span class="flex items-center justify-center">
         <a href="https://github.com/jstet">
             <GithubIcon cl="h-6 w-6 mx-4" />
