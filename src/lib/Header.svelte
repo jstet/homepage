@@ -1,6 +1,7 @@
 <script>
     import HomeIcon from "./icons/HomeIcon.svelte";
     import { header_height } from "$lib/stores/header_height.js";
+    import { window_height } from "$lib/stores/window_height.js";
     import { doc_height } from "$lib/stores/doc_height.js";
     import { onMount } from "svelte";
 
@@ -12,21 +13,17 @@
     function handler() {
         var winScroll =
             document.body.scrollTop || document.documentElement.scrollTop;
-        scrolled = (winScroll / $doc_height) * 100;
-
-        // console.log(winScroll, scrolled, $doc_height)
+        scrolled = ((winScroll)  / ($doc_height-$window_height)) * 100;
     }
     onMount(async () => {
         header_height.set(clientHeight);
     });
-
-    
 </script>
 
 <svelte:window on:scroll={handler} />
 
 <nav
-    class="text-centerlg:py-5 bg-neutral-100 lg:bg-transparent fixed top-0 w-full grid lg:grid-cols-3 z-20"
+    class="text-centerlg:py-5 bg-neutral-100 lg:bg-transparent fixed top-0 w-full grid lg:grid-cols-3 lg:z-20 z-30"
     bind:clientHeight
 >
     <div class="hidden lg:block h-full" />

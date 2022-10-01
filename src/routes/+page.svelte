@@ -1,58 +1,58 @@
 <script>
     import SideArt from "../lib/SideArt.svelte";
+    import SubHeader from "../lib/SubHeader.svelte";
     import { header_height } from "$lib/stores/header_height.js";
+    import {footer_height} from "$lib/stores/footer_height.js";
+    import { window_width } from "$lib/stores/window_width.js";
+    import { doc_height } from "$lib/stores/doc_height.js";
+    import { det_doc_height } from "$lib/functions/dimension_helpers.js";
     import { sub_header_height } from "$lib/stores/sub_header_height.js";
-    import { window_height } from "$lib/stores/window_height.js";
     import { onMount } from "svelte";
 
-    let clientHeight;
+    let pp1 = 0;
+    let pp2 = 0;
 
     function handler() {
         location.reload();
     }
 
+    function det_padding(page) {
+        if ($window_width > 1024) {
+            console.log($header_height + $sub_header_height);
+            return $header_height + $sub_header_height;
+        } else {
+            if (page == 1){
+                return 0;
+        }
+           else{
+                
+                return $footer_height
+           }
+        }
+    }
+
     onMount(async () => {
-        sub_header_height.set(clientHeight);
+        $doc_height = det_doc_height(document);
+        pp1 = det_padding(1);
     });
+
+    $: if ($footer_height != 0 ){
+        pp2 = det_padding(2);
+    }
 </script>
 
 <svelte:window on:resize={handler} />
 
-<SideArt />
-
-<!-- HEADER -->
-<div
-    class=" bg-neutral-100 w-full grid grid-rows-2 lg:grid-cols-2 lg:h-40 fixed z-10"
-    bind:clientHeight
-    style="top: {$header_height}px"
->
-    <div class="lg:h-40 flex items-center justify-center">
-        <div class="lg:p-0 py-4 w-32">
-            <img src="media/me.jpeg" class="rounded-full" alt="" />
-        </div>
-    </div>
-    <div class="lg:h-40 lg:flex items-center ">
-        <span class="text-center lg:text-left px-4 ">
-            <h2 class="font-bold text-lg tracking-tight lg:text-xl">
-                Graduate Student
-            </h2>
-            <h4 class="text-base text-medium lg:text-lg font-light pb-6 lg:p-0">
-                Social and Economic Data Science
-            </h4>
-        </span>
-    </div>
-</div>
-
-<!-- HEADER -->
+<SubHeader />
 
 <!-- Page 1 -->
-<div class="h-screen">
-    <div
-        class="lg:grid grid-cols-2"
-        style="padding-top: {$header_height + $sub_header_height}px;"
-    >
+<div class="h-screen" id="page_1">
+    <div class="lg:grid grid-cols-2" style="padding-top: {pp1}px;">
         <div class="lg:block hidden" />
         <div class="px-4 pt-4">
+            <p class="leading-7 lg:text-lg">
+                I am not sure if I really need a homepage.
+            </p>
             <h2 class="text-lg font-semibold ">About me</h2>
             <p class="leading-7 lg:text-lg ">
                 After completing my Bachelor's degree in Governance and Public
@@ -79,12 +79,8 @@
                     href="https://correlaid.org/correlaidx/konstanz/"
                     >CorrelAid</a
                 >
-                and grow vegetables in the
-                <a
-                    class=" "
-                    href="https://www.instagram.com/campusgemuesekonstanz/"
-                    >university garden</a
-                >.
+                and grow vegetables in the<style>
+                </style>
             </p>
             <p class="leading-7 pt-3 text-sm lg:text-base">
                 To find out more, follow the links in the footer or
@@ -97,7 +93,9 @@
 <!-- Page 2 -->
 <div class="h-screen">
     <div
-        class="w-full lg:grid grid-cols-2 bg-transparent" style="padding-top: {$header_height + $sub_header_height}px;">
+        class="w-full lg:grid grid-cols-2 bg-transparent"
+        style="padding-top: {pp2}px;"
+    >
         <div class="lg:block hidden" />
         <div class="px-4 pt-4">
             <h2 class="text-lg font-semibold ">Projects</h2>
@@ -106,3 +104,5 @@
     </div>
 </div>
 <!-- Page 2 -->
+
+<SideArt />

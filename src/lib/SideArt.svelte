@@ -1,20 +1,21 @@
 <script>
-    import { onMount } from "svelte";
     import { doc_height } from "$lib/stores/doc_height.js";
+    import { footer_height } from "$lib/stores/footer_height.js";
+    import { window_width } from "$lib/stores/window_width.js";
     import trianglify from "trianglify";
 
-    let outerWidth;
     let pattern_container;
 
-    let height = null;
+    let height = 0;
+    let width = 0;
 
     function draw_pattern() {
-        var height = $doc_height;
-
-        var width = outerWidth / 2;
-
         // apply trianglify to convert the points to polygons and apply the color
         // gradient
+
+        width = $window_width / 2;
+
+        height = $doc_height - $footer_height;
         var pattern1 = trianglify({
             height,
             width,
@@ -28,23 +29,21 @@
         // canvas element
         pattern_container.appendChild(pattern1.toCanvas());
     }
-    onMount(async () => {
-        height = $doc_height;
-    });
-    $: if (height != null) {
-        draw_pattern();
+        
+       
+    $: if ($doc_height != 0 && pattern_container != undefined){
+        draw_pattern()
     }
 
-    $:console.log($doc_height)
 </script>
 
-<svelte:window bind:outerWidth />
-
-<div bind:this={pattern_container} class="absolute top-0 hidden lg:block" />
+<div
+    bind:this={pattern_container}
+    class="absolute top-0 hidden lg:block z-20"
+/>
 
 <style>
     div {
-        z-index: 1;
         clip-path: polygon(
             0 0,
             40% 25%,

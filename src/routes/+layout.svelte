@@ -1,21 +1,21 @@
 <script>
   import "../app.css";
   import { onMount } from "svelte";
-  import { doc_height } from "$lib/stores/doc_height.js";
   import { window_height } from "$lib/stores/window_height.js";
-  import {det_doc_height} from "$lib/functions/dimension_helpers.js"
+  import { window_width } from "$lib/stores/window_width.js";
   import Header from "../lib/Header.svelte";
   import Footer from "../lib/Footer.svelte";
 
   let innerHeight;
+  let outerWidth;
+
+  let loaded = false;
 
   onMount(async () => {
-
-    doc_height.set(det_doc_height(document));
-
-    window_height.set(innerHeight);
+    $window_height = innerHeight;
+    $window_width = outerWidth;
+    loaded = true;
   });
-
 </script>
 
 <svelte:head>
@@ -23,10 +23,14 @@
   <link rel="icon" type="image/svg" href="fav.svg" />
 </svelte:head>
 
-<svelte:window bind:innerHeight />
+<svelte:window bind:innerHeight bind:outerWidth />
 
-<Header />
+{#if loaded}
+  <Header />
 
-<slot />
+  <slot />
 
-<Footer />
+  <Footer />
+{:else}
+  <p>Loading...</p>
+{/if}
