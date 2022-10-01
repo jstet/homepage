@@ -23,7 +23,7 @@
 <svelte:window on:scroll={handler} />
 
 <nav
-    class="text-centerlg:py-5 bg-neutral-100 lg:bg-transparent fixed top-0 w-full grid lg:grid-cols-3 lg:z-20 z-30"
+    class="bg-neutral-100 text-center lg:py-5 lg:bg-transparent fixed top-0 w-full grid lg:grid-cols-3 lg:z-20 z-30"
     bind:clientHeight
 >
     <div class="hidden lg:block h-full" />
@@ -36,7 +36,7 @@
             </h1>
         </span>
         <div
-            class="progress-container mt-4 m-auto w-3/6 h-2 rounded-full bg-neutral-100 hidden lg:block"
+            class="bg-neutral-100 progress-container mt-4 m-auto w-3/6 h-2 rounded-full hidden lg:block"
         >
             <div
                 class="progress-bar bg-emerald-400 h-2 rounded-full"

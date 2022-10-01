@@ -26,7 +26,7 @@
         }
            else{
                 
-                return $footer_height
+                return $header_height
            }
         }
     }
@@ -49,12 +49,9 @@
 <div class="h-screen" id="page_1">
     <div class="lg:grid grid-cols-2" style="padding-top: {pp1}px;">
         <div class="lg:block hidden" />
-        <div class="px-4 pt-4">
-            <p class="leading-7 lg:text-lg">
-                I am not sure if I really need a homepage.
-            </p>
-            <h2 class="text-lg font-semibold ">About me</h2>
-            <p class="leading-7 lg:text-lg ">
+        <div class="px-4 prose">
+            <h2 class="pt-6">Biography</h2>
+            <p class="">
                 After completing my Bachelor's degree in Governance and Public
                 Policy at the <a class=" " href="https://www.uni-passau.de/"
                     >University of Passau</a
@@ -64,7 +61,7 @@
                     href="https://www.pik-potsdam.de/de/institut/futurelabs/sozialer-metabolismus-klimafolgen"
                 >
                     Potsdam Institute for Climate Impact Research</a
-                >. Currently, I am studying Social and Economic Data Science at
+                >. Currently, I am studying Social (and Economic) Data Science at
                 the
                 <a class=" " href="https://www.uni-konstanz.de/"
                     >University of Konstanz</a
@@ -73,7 +70,7 @@
                     >Center for Data and Methods</a
                 >.
             </p>
-            <p class="leading-7 pt-3 lg:text-lg ">
+            <p class=" ">
                 In my free time, I volunteer with <a
                     class=" "
                     href="https://correlaid.org/correlaidx/konstanz/"
@@ -82,7 +79,7 @@
                 and grow vegetables in the<style>
                 </style>
             </p>
-            <p class="leading-7 pt-3 text-sm lg:text-base">
+            <p class="">
                 To find out more, follow the links in the footer or
                 <a href="mailto:mail@jstet.net">contact me</a>.
             </p>
@@ -94,15 +91,25 @@
 <div class="h-screen">
     <div
         class="w-full lg:grid grid-cols-2 bg-transparent"
-        style="padding-top: {pp2}px;"
+        style="padding-top: {pp2}px; padding-bottom: {100}px"
     >
         <div class="lg:block hidden" />
-        <div class="px-4 pt-4">
-            <h2 class="text-lg font-semibold ">Projects</h2>
-            <p>blub</p>
+        <div class="px-4 prose">
+            <h2 class="pt-6">Why do I have a homepage?</h2>
+            <h5>Good question, here's a list:</h5>
+            <ul>
+                <li>To showcase projects</li>
+                <li>I don't like LinkedIn</li>
+                <li>To have control over what you see when you search for me on the Internet <sup>1</sup></li>
+                <li>It's a nice side project that I can use as an excuse to code unnecessary stuff</li>
+                <li>This list is actually just a page filler to have a reason for the scroll animation <sup>2</sup></li>
+            </ul>
+            <p><sup>1</sup> I know that probably rarely happens.</p>
+            <p><sup>2</sup> Only on larger devices. Sorry.  I could have added a media query for displaying this text.</p>
         </div>
     </div>
 </div>
 <!-- Page 2 -->
+
 
 <SideArt />

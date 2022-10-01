@@ -5,6 +5,7 @@
   import { window_width } from "$lib/stores/window_width.js";
   import Header from "../lib/Header.svelte";
   import Footer from "../lib/Footer.svelte";
+  import Loader from "../lib/Loader.svelte";
 
   let innerHeight;
   let outerWidth;
@@ -27,10 +28,8 @@
 
 {#if loaded}
   <Header />
-
   <slot />
-
   <Footer />
 {:else}
-  <p>Loading...</p>
+  <Loader />
 {/if}

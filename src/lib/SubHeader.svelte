@@ -21,13 +21,13 @@
         </div>
     </div>
     <div class="lg:h-40 lg:flex items-center ">
-        <span class="text-center lg:text-left px-4 ">
-            <h2 class="font-bold text-lg tracking-tight lg:text-xl">
+        <span class="text-center lg:text-left px-4 prose lg:prose-xl">
+            <h3 class="">
                 Graduate Student
-            </h2>
-            <h4 class="text-base text-medium lg:text-lg font-light pb-6 lg:p-0">
-                Social and Economic Data Science
-            </h4>
+            </h3>
+            <h5 class=" pb-6 lg:p-0">
+                Social Data Science
+            </h5>
         </span>
     </div>
 </div>
