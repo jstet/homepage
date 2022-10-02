@@ -21,7 +21,7 @@
 
 <svelte:head>
   <title>Jonas Stettner</title>
-  <!-- <script defer data-domain="jstet.net" src="https://plausible.io/js/plausible.js"></script> -->
+  <script defer data-domain="jstet.net" src="https://plausible.io/js/plausible.js"></script>
   <link rel="icon" type="image/svg" href="fav.svg" />
 </svelte:head>
 
