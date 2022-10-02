@@ -16,7 +16,7 @@
         width = $window_width / 2;
 
         height = $doc_height - $footer_height;
-        var pattern1 = trianglify({
+        var pattern = trianglify({
             height,
             width,
             cellSize: 80,
@@ -27,14 +27,16 @@
 
         // use the toCanvas function to render the generated geometry to an HTML5
         // canvas element
-        pattern_container.appendChild(pattern1.toCanvas());
-    }
-        
-       
-    $: if ($doc_height != 0 && pattern_container != undefined){
-        draw_pattern()
+        pattern_container.appendChild(pattern.toCanvas());
     }
 
+    $: if (
+        $doc_height != 0 &&
+        pattern_container != undefined &&
+        $window_width > 1024
+    ) {
+        draw_pattern();
+    }
 </script>
 
 <div

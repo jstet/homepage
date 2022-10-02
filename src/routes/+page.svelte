@@ -2,7 +2,7 @@
     import SideArt from "../lib/SideArt.svelte";
     import SubHeader from "../lib/SubHeader.svelte";
     import { header_height } from "$lib/stores/header_height.js";
-    import {footer_height} from "$lib/stores/footer_height.js";
+    import { footer_height } from "$lib/stores/footer_height.js";
     import { window_width } from "$lib/stores/window_width.js";
     import { doc_height } from "$lib/stores/doc_height.js";
     import { det_doc_height } from "$lib/functions/dimension_helpers.js";
@@ -12,22 +12,22 @@
     let pp1 = 0;
     let pp2 = 0;
 
+    let reloaded;
+
     function handler() {
         location.reload();
+        reloaded = true;
     }
 
     function det_padding(page) {
-        if ($window_width > 1024) {
-            console.log($header_height + $sub_header_height);
+        if ($window_width >= 1024) {
             return $header_height + $sub_header_height;
         } else {
-            if (page == 1){
+            if (page == 1) {
                 return 0;
-        }
-           else{
-                
-                return $header_height
-           }
+            } else {
+                return $header_height;
+            }
         }
     }
 
@@ -36,7 +36,7 @@
         pp1 = det_padding(1);
     });
 
-    $: if ($footer_height != 0 ){
+    $: if ($footer_height != 0) {
         pp2 = det_padding(2);
     }
 </script>
@@ -61,8 +61,8 @@
                     href="https://www.pik-potsdam.de/de/institut/futurelabs/sozialer-metabolismus-klimafolgen"
                 >
                     Potsdam Institute for Climate Impact Research</a
-                >. Currently, I am studying Social (and Economic) Data Science at
-                the
+                >. Currently, I am studying Social (and Economic) Data Science
+                at the
                 <a class=" " href="https://www.uni-konstanz.de/"
                     >University of Konstanz</a
                 >, where I also work as a student assistant at the
@@ -76,8 +76,7 @@
                     href="https://correlaid.org/correlaidx/konstanz/"
                     >CorrelAid</a
                 >
-                and grow vegetables in the<style>
-                </style>
+                and grow vegetables in the university garden.
             </p>
             <p class="">
                 To find out more, follow the links in the footer or
@@ -100,16 +99,23 @@
             <ul>
                 <li>To showcase projects</li>
                 <li>I don't like LinkedIn</li>
-                <li>To have control over what you see when you search for me on the Internet <sup>1</sup></li>
-                <li>It's a nice side project that I can use as an excuse to code unnecessary stuff</li>
-                <li>This list is actually just a page filler to have a reason for the scroll animation <sup>2</sup></li>
+                <li>
+                    It's a nice side project that I can use as an excuse to code
+                    unnecessary stuff
+                </li>
+                <li>Lorem ipsum</li>
+                <li>
+                    This list is actually just a page filler to have a reason
+                    for the scroll animation. <sup>1</sup>
+                </li>
             </ul>
-            <p><sup>1</sup> I know that probably rarely happens.</p>
-            <p><sup>2</sup> Only on larger devices. Sorry.  I could have added a media query for displaying this text.</p>
+            <p>
+                <sup>1</sup> Only on larger devices. Sorry. I could have added a
+                media query for displaying this text.
+            </p>
         </div>
     </div>
 </div>
 <!-- Page 2 -->
-
 
 <SideArt />

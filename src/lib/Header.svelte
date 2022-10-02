@@ -3,17 +3,19 @@
     import { header_height } from "$lib/stores/header_height.js";
     import { window_height } from "$lib/stores/window_height.js";
     import { doc_height } from "$lib/stores/doc_height.js";
+    import { scrolled } from "$lib/stores/scrolled.js";
     import { onMount } from "svelte";
 
     let progress_bar;
-    let scrolled = 0;
 
     let clientHeight;
 
     function handler() {
         var winScroll =
             document.body.scrollTop || document.documentElement.scrollTop;
-        scrolled = ((winScroll)  / ($doc_height-$window_height)) * 100;
+        $scrolled = ((winScroll)  / ($doc_height-$window_height)) * 100;
+
+
     }
     onMount(async () => {
         header_height.set(clientHeight);
@@ -23,15 +25,15 @@
 <svelte:window on:scroll={handler} />
 
 <nav
-    class="bg-neutral-100 text-center lg:py-5 lg:bg-transparent fixed top-0 w-full grid lg:grid-cols-3 lg:z-20 z-30"
+    class="bg-neutral-100 text-center lg:py-5 lg:bg-white fixed top-0 w-full grid lg:grid-cols-3 lg:z-20 z-30"
     bind:clientHeight
 >
     <div class="hidden lg:block h-full" />
 
-    <div class="lg:bg-white py-4 ">
+    <div class=" py-4 ">
         <span class="flex items-center justify-center">
             <HomeIcon cl="h-9 w-9 mr-3" />
-            <h1 class="font-bold text-xl lg:text-2xl tracking-tight ">
+            <h1 class="font-bold text-lg lg:text-2lg tracking-tight ">
                 Jonas Stettner
             </h1>
         </span>
@@ -40,7 +42,7 @@
         >
             <div
                 class="progress-bar bg-emerald-400 h-2 rounded-full"
-                style="width: {scrolled}%;"
+                style="width: {$scrolled}%;"
                 bind:this={progress_bar}
             />
         </div>
