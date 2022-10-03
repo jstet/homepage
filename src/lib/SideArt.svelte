@@ -2,7 +2,7 @@
     import { doc_height } from "$lib/stores/doc_height.js";
     import { footer_height } from "$lib/stores/footer_height.js";
     import { window_width } from "$lib/stores/window_width.js";
-    import trianglify from "trianglify";
+    import  trianglify  from "trianglify";
 
     let pattern_container;
 

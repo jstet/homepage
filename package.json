@@ -21,7 +21,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"lax.js": "^2.0.3",
 		"trianglify": "^4.1.1"
 	}
 }

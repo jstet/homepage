@@ -1,10 +1,19 @@
-FROM node:16 AS build
+FROM node:16.15.1 AS builder
 WORKDIR /app
-COPY package.json ./
-RUN npm install 
-COPY . ./
-RUN npm run build
+COPY package.json package-lock.json ./
+RUN npm install
+COPY . .
+RUN npm run build && npm prune --production
 
-FROM nginx
-COPY --from=build /app/public /usr/share/nginx/html
+FROM node:16.15.1
+USER node:node
+WORKDIR /app
+COPY --from=builder --chown=node:node /app/build ./build
+COPY --from=builder --chown=node:node /app/node_modules ./node_modules
+COPY --chown=node:node package.json .
+ENV PORT 3000
+EXPOSE ${PORT}
+CMD ["node","build"]
+
+
 
