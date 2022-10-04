@@ -1,53 +1,18 @@
 <script>
     import SideArt from "../lib/SideArt.svelte";
     import SubHeader from "../lib/SubHeader.svelte";
-    import { header_height } from "$lib/stores/header_height.js";
-    import { footer_height } from "$lib/stores/footer_height.js";
-    import { window_width } from "$lib/stores/window_width.js";
-    import { doc_height } from "$lib/stores/doc_height.js";
-    import { det_doc_height } from "$lib/functions/dimension_helpers.js";
-    import { sub_header_height } from "$lib/stores/sub_header_height.js";
-    import { onMount } from "svelte";
+    import { dims, window_dims } from "$lib/stores/dimensions.js";
 
-    let pp1 = 0;
-    let pp2 = 0;
-
-    let reloaded;
-
-    function handler() {
-        location.reload();
-        reloaded = true;
-    }
-
-    function det_padding(page) {
-        if ($window_width >= 1024) {
-            return $header_height + $sub_header_height;
-        } else {
-            if (page == 1) {
-                return 0;
-            } else {
-                return $header_height;
-            }
-        }
-    }
-
-    onMount(async () => {
-        $doc_height = det_doc_height(document);
-        pp1 = det_padding(1);
-    });
-
-    $: if ($footer_height != 0) {
-        pp2 = det_padding(2);
-    }
 </script>
-
-<svelte:window on:resize={handler} />
 
 <SubHeader />
 
 <!-- Page 1 -->
-<div class="h-screen" id="page_1">
-    <div class="lg:grid grid-cols-2" style="padding-top: {pp1}px;">
+<div style="height: {$dims.p1_height}px;">
+    <div
+        class="lg:grid grid-cols-2"
+        style="padding-top: {$dims.p1_p_top}px;"
+    >
         <div class="lg:block hidden" />
         <div class="px-4 prose">
             <h2 class="pt-6">Biography</h2>
@@ -87,10 +52,10 @@
 </div>
 <!-- Page 1 -->
 <!-- Page 2 -->
-<div class="h-screen">
+<div style="height: {$dims.p2_height}px;">
     <div
         class="w-full lg:grid grid-cols-2 bg-transparent"
-        style="padding-top: {pp2}px; padding-bottom: {100}px"
+        style="padding-bottom: 100px; padding-top: {$dims.p2_p_top}px;"
     >
         <div class="lg:block hidden" />
         <div class="px-4 prose">

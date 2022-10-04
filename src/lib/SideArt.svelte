@@ -1,51 +1,58 @@
 <script>
-    import { doc_height } from "$lib/stores/doc_height.js";
-    import { footer_height } from "$lib/stores/footer_height.js";
-    import { window_width } from "$lib/stores/window_width.js";
-    import  trianglify  from "trianglify";
+    import { dims, window_dims } from "$lib/stores/dimensions.js";
+    import trianglify from "trianglify";
+    import { onMount } from "svelte";
 
     let pattern_container;
-
-    let height = 0;
-    let width = 0;
 
     function draw_pattern() {
         // apply trianglify to convert the points to polygons and apply the color
         // gradient
 
-        width = $window_width / 2;
+        if ($dims.doc_height != 0) {
+            if (pattern_container.innerHTML != "") {
+                pattern_container.innerHTML = "";
+            }
 
-        height = $doc_height - $footer_height;
-        var pattern = trianglify({
-            height,
-            width,
-            cellSize: 80,
-            strokeWidth: 2,
-            fill: false,
-            yColors: ["#3273DC", "#F4F4F4"],
-        });
+            var width = $window_dims.window_width / 2;
 
-        // use the toCanvas function to render the generated geometry to an HTML5
-        // canvas element
-        pattern_container.appendChild(pattern.toCanvas());
+            var height = $dims.doc_height - $dims.footer_height;
+            
+            var pattern = trianglify({
+                height,
+                width,
+                cellSize: 80,
+                strokeWidth: 2,
+                fill: false,
+                yColors: ["#3273DC", "#F4F4F4"],
+            });
+
+            // use the toCanvas function to render the generated geometry to an HTML5
+            // canvas element
+            pattern.toSVG(pattern_container);
+        }
+        else{
+
+        }
     }
 
-    $: if (
-        $doc_height != 0 &&
-        pattern_container != undefined &&
-        $window_width > 1024
-    ) {
+    onMount(async () => {
         draw_pattern();
-    }
+    });
 </script>
 
-<div
+<svelte:window on:resize={draw_pattern} />
+
+<svg
+    fill="none"
+    height="100%"
+    width="50%"
     bind:this={pattern_container}
     class="absolute top-0 hidden lg:block z-20"
 />
 
 <style>
-    div {
+    svg {
         clip-path: polygon(
             0 0,
             40% 25%,

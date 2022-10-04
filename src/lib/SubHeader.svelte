@@ -1,37 +1,26 @@
 <script>
     import IndexDataViz from "./svg/IndexDataViz.svelte";
-    import { onMount } from "svelte";
-    import { fly } from "svelte/transition";
     import { scrolled } from "$lib/stores/scrolled.js";
-    import { header_height } from "$lib/stores/header_height.js";
-    import { sub_header_height } from "$lib/stores/sub_header_height.js";
-
-    let clientHeight;
-
-    onMount(async () => {
-        sub_header_height.set(clientHeight);
-    });
+    import { dims } from "$lib/stores/dimensions.js";
 </script>
 
 <div
-    bind:clientHeight
-    class=" bg-neutral-100 w-full  lg:fixed lg:z-30"
-    id="sub_header"
-    style="margin-top: {$header_height}px; "
+    class=" bg-neutral-100 w-full lg:fixed lg:z-30"
+    style="height: {$dims.sub_header_height}px; margin-top: {$dims.header_height}px; "
 >
-    <div class="lg:relative" style="right: {$scrolled}%;">
-        <div class="grid grid-rows-2 lg:grid-cols-2 lg:h-52 ">
-            <div class="lg:h-52 flex items-center justify-center">
-                <div class="lg:p-0 py-6 w-32">
-                    <img src="media/me.jpeg" class="rounded-full" alt="" />
-                </div>
+    <div class="lg:relative flex flex-row lg:flex-row h-full" style="right: {$scrolled}%">
+        <div class="flex items-center justify-center basis-2/4">
+            <div class="lg:p-0 py-6 w-32">
+                <img src="media/me.jpeg" class="rounded-full" alt="" />
             </div>
-            <div class="lg:h-52 lg:flex items-center ">
-                <span class="text-center lg:text-left px-4 prose lg:prose-lg">
-                    <h3 class="leading-3">Graduate Student</h3>
-                    <h5 class=" pb-6 lg:p-0 leading-3">Social Data Science</h5>
-                </span>
-            </div>
+        </div>
+        <div class=" basis-2/4 m-auto px-4">
+            
+            <span class="text-center lg:text-left prose lg:prose-lg">
+                <h3 class="leading-6">Graduate Student</h3>
+                <h5 class="leading-6">Social Data Science</h5>
+            </span>
+            
         </div>
     </div>
     <div
@@ -39,7 +28,6 @@
         style="right: {$scrolled - 100}%;"
     >
         <div class="h-52 w-2/4 m-auto">
-            
             <IndexDataViz />
         </div>
     </div>

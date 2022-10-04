@@ -1,11 +1,10 @@
 <script>
-        import { sub_header_height } from "$lib/stores/sub_header_height.js";
-        import { window_width } from "$lib/stores/window_width.js";
+        import {window_dims, dims } from "$lib/stores/dimensions.js";
 
         var dimx = 0
         var dimy = 0
-        $: dimx = $window_width/2
-        $: dimy = $sub_header_height
+        $: dimx = $window_dims.window_width/2
+        $: dimy = $dims.sub_header_height
 
 
 </script>

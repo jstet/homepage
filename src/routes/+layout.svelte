@@ -1,8 +1,7 @@
 <script>
   import "../app.css";
   import { onMount } from "svelte";
-  import { window_height } from "$lib/stores/window_height.js";
-  import { window_width } from "$lib/stores/window_width.js";
+  import { window_dims, dims } from "$lib/stores/dimensions.js";
   import Header from "../lib/Header.svelte";
   import Footer from "../lib/Footer.svelte";
   import Loader from "../lib/Loader.svelte";
@@ -12,16 +11,20 @@
 
   let loaded = false;
 
+  $: $window_dims.window_height = innerHeight;
+  $: $window_dims.window_width = outerWidth;
+
   onMount(async () => {
-    $window_height = innerHeight;
-    $window_width = outerWidth;
     loaded = true;
   });
 </script>
 
 <svelte:head>
   <title>Jonas Stettner</title>
-  <script defer data-domain="jstet.net" src="https://plausible.jstet.net/js/plausible.js"></script>
+  <script
+    defer
+    data-domain="jstet.net"
+    src="https://plausible.jstet.net/js/plausible.js"></script>
   <link rel="icon" type="image/svg" href="fav.svg" />
 </svelte:head>
 

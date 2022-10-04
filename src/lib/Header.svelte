@@ -1,10 +1,7 @@
 <script>
     import HomeIcon from "./icons/HomeIcon.svelte";
-    import { header_height } from "$lib/stores/header_height.js";
-    import { window_height } from "$lib/stores/window_height.js";
-    import { doc_height } from "$lib/stores/doc_height.js";
+    import { window_dims, dims } from "$lib/stores/dimensions.js";
     import { scrolled } from "$lib/stores/scrolled.js";
-    import { onMount } from "svelte";
 
     let progress_bar;
 
@@ -13,25 +10,21 @@
     function handler() {
         var winScroll =
             document.body.scrollTop || document.documentElement.scrollTop;
-        $scrolled = ((winScroll)  / ($doc_height-$window_height)) * 100;
-
-
+        $scrolled = (winScroll / ($dims.doc_height - $window_dims.window_height)) * 100;
     }
-    onMount(async () => {
-        header_height.set(clientHeight);
-    });
+   
 </script>
 
 <svelte:window on:scroll={handler} />
 
 <nav
-    class="bg-neutral-100 text-center lg:py-5 lg:bg-white fixed top-0 w-full grid lg:grid-cols-3 lg:z-20 z-30"
+    class="bg-neutral-100 lg:bg-white fixed top-0 w-full grid lg:grid-cols-3 lg:z-20 z-30" style="height: {$dims.header_height}px;"
     bind:clientHeight
 >
     <div class="hidden lg:block h-full" />
 
-    <div class=" py-4 ">
-        <span class="flex items-center justify-center">
+    <div class="flex flex-col items-center justify-center">
+        <span class="flex items-center justify-center lg:mt-4">
             <HomeIcon cl="h-9 w-9 mr-3" />
             <h1 class="font-bold text-lg lg:text-2lg tracking-tight ">
                 Jonas Stettner
