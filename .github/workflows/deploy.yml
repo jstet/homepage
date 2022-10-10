@@ -20,7 +20,7 @@ jobs:
             cd homepage
             git reset --hard
             git pull origin main
-            docker build --no-cache -t jstet/homepage:latest
+            docker build --no-cache -t jstet/homepage:latest .
             docker push jstet/homepage:latest
             cd ../compose_homepage
             docker stack deploy -c docker-compose.yml homepage
