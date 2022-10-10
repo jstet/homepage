@@ -68,7 +68,7 @@
                     It's a nice side project that I can use as an excuse to code
                     unnecessary stuff
                 </li>
-                <li>Lorem ipsum</li>
+                <li>Lorem Ipsum</li>
                 <li>
                     This list is actually just a page filler to have a reason
                     for the scroll animation. <sup>1</sup>
