@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"engines": {
-		"npm": "8.19.1",
+		"npm": "8.19.2",
 		"node": "16.16.0"
 	},
 	"scripts": {
@@ -27,6 +27,7 @@
 	"dependencies": {
 		"@types/trianglify": "^1.2.1",
 		"d3": "^7.6.1",
+		"lodash": "^4.17.21",
 		"trianglify": "^4.1.1"
 	}
 }
