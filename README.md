@@ -1,4 +1,4 @@
 # My homepage
 
-## Todo
-- Responsiveness for IPad (horizontal is lage device, portrait isnt)
+## Sources
+- https://upstash.com/blog/svelte-with-serverless-redis

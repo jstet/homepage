@@ -20,6 +20,7 @@ jobs:
             cd homepage
             git reset --hard
             git pull origin main
+            mv /home/user/homepage.env /home/user/homepage/.env
             docker build --no-cache -t jstet/homepage:latest .
             docker push jstet/homepage:latest
             cd ../compose_homepage

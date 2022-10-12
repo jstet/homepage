@@ -1,7 +1,9 @@
 <script>
-    import IndexDataViz from "./svg/IndexDataViz.svelte";
+    import IndexDataViz from "./IndexDataViz.svelte";
     import { scrolled } from "$lib/stores/scrolled.js";
     import { dims } from "$lib/stores/dimensions.js";
+    
+    export let data;
 </script>
 
 <div
@@ -28,7 +30,7 @@
         style="right: {$scrolled - 100}%;"
     >
         <div class="h-52 w-2/4 m-auto">
-            <IndexDataViz />
+            <IndexDataViz {data}/>
         </div>
     </div>
 </div>

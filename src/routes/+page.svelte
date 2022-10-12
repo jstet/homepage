@@ -1,11 +1,12 @@
 <script>
     import SideArt from "../lib/SideArt.svelte";
     import SubHeader from "../lib/SubHeader.svelte";
-    import { dims, window_dims } from "$lib/stores/dimensions.js";
+    import { dims} from "$lib/stores/dimensions.js";
 
+    export let data ;
 </script>
 
-<SubHeader />
+<SubHeader {data}/>
 
 <!-- Page 1 -->
 <div style="height: {$dims.p1_height}px;">

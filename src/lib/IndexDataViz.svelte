@@ -1,12 +1,14 @@
 <script>
         import {window_dims, dims } from "$lib/stores/dimensions.js";
 
+        export let data;
+
         var dimx = 0
         var dimy = 0
         $: dimx = $window_dims.window_width/2
         $: dimy = $dims.sub_header_height
 
-
+    $: console.log(data.visits.value)
 </script>
 
 

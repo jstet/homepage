@@ -50,7 +50,7 @@
 </script>
 
 {#if cols}
-    <div class="absolute top-0 hidden lg:block z-20" style="opacity: 19%;">
+    <div class="absolute top-0 hidden lg:block z-20" style="opacity: 15%;">
         <svg {width} {height}>
             {#each rows as row}
                 <g>
@@ -59,8 +59,6 @@
                             x={col.x}
                             y={row.y}
                             fill={row.c}
-                            stroke-width="1 "
-                            stroke="#171717"
                             width={box}
                             height={box}
                         />
