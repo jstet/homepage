@@ -3,6 +3,8 @@
     import SubHeader from "../lib/SubHeader.svelte";
     import { dims} from "$lib/stores/dimensions.js";
 
+    export const prerender = false;
+
     export let data ;
 </script>
 

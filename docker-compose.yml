@@ -1,0 +1,32 @@
+version: '3.9'
+services:
+  homepage_redis:
+    build: Redis/.
+    image: jstet/homepage_redis:latest
+    ports:
+      - 6379
+    healthcheck:
+      test: ["CMD", "redis-cli","ping"]
+    networks: 
+      - db
+  homepage:
+    build: .
+    image: jstet/homepage:latest
+    ports:
+      - 3000:3000
+    networks: 
+      - db
+    depends_on:
+      homepage_redis:
+        condition: service_completed_successfully
+
+
+networks:
+  db:
+    
+    
+
+
+    
+    
+  

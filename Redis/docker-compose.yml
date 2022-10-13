@@ -1,9 +1,10 @@
 # for dev purposes
-version: '3.8'
+version: '3.9'
 services:
   redis:
-    container_name: redis
-    image: localhost:5000/homepage_redis:latest
+    image: redis:latest
     ports:
-      - '6379:6379'
-  
+      - 6379:6379
+    healthcheck:
+      test: ["CMD", "redis-cli","ping"]
+    
