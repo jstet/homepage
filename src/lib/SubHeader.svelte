@@ -13,7 +13,7 @@
     <div class="lg:relative flex flex-row lg:flex-row h-full" style="right: {$scrolled}%">
         <div class="flex items-center justify-center basis-2/4">
             <div class="lg:p-0 py-6 w-32">
-                <img src="media/me.jpeg" class="rounded-full" alt="" />
+                <img width="500" height="500" src="media/me.jpeg" class="rounded-full" alt="" />
             </div>
         </div>
         <div class=" basis-2/4 m-auto px-4">

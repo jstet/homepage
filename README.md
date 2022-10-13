@@ -1,4 +1,6 @@
-# My homepage
+# Homepage
+
+Always WIP
 
 ## Sources
 - https://upstash.com/blog/svelte-with-serverless-redis

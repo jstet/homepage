@@ -26,7 +26,7 @@
     <div class="flex flex-col items-center justify-center">
         <span class="flex items-center justify-center lg:mt-4">
             <HomeIcon cl="h-9 w-9 mr-3" />
-            <h1 class="font-bold text-lg lg:text-2lg tracking-tight ">
+            <h1 class="font-bold text-xl lg:text-2xl tracking-tight ">
                 Jonas Stettner
             </h1>
         </span>
