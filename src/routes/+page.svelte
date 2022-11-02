@@ -5,10 +5,10 @@
 
     export const prerender = false;
 
-    export let data ;
+    // export let data ;
 </script>
 
-<SubHeader {data}/>
+<SubHeader/>
 
 <!-- Page 1 -->
 <div style="min-height: {$dims.p1_height}px; padding-top: {$dims.p1_p_top}px;">

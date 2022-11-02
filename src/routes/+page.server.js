@@ -1,18 +1,18 @@
-import { api_handler } from '../lib/api_handler';
+// import { api_handler } from '../lib/api_handler';
 
 export const prerender = false;
 
 /** @type {import('./$types').PageServerLoad} */
-export async function load({ params }) {
+// export async function load({ params }) {
 
-    const { data, error } = await api_handler()
-    if (error) {
-        console.log(error)
-    }
+//     const { data, error } = await api_handler()
+//     if (error) {
+//         console.log(error)
+//     }
 
-    return data;
+//     return data;
     
-}
+// }
 
 
 
