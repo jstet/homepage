@@ -11,10 +11,10 @@
 <SubHeader {data}/>
 
 <!-- Page 1 -->
-<div style="height: {$dims.p1_height}px;">
+<div style="min-height: {$dims.p1_height}px; padding-top: {$dims.p1_p_top}px;">
     <div
         class="lg:grid grid-cols-2"
-        style="padding-top: {$dims.p1_p_top}px;"
+        style=""
     >
         <div class="lg:block hidden" />
         <div class="px-4 prose">
@@ -55,10 +55,9 @@
 </div>
 <!-- Page 1 -->
 <!-- Page 2 -->
-<div style="height: {$dims.p2_height}px;">
+<div style="min-height: {$dims.p2_height}px; padding-top: {$dims.p2_p_top}px;">
     <div
         class="w-full lg:grid grid-cols-2 bg-transparent"
-        style="padding-bottom: 100px; padding-top: {$dims.p2_p_top}px;"
     >
         <div class="lg:block hidden" />
         <div class="px-4 prose">

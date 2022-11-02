@@ -1,7 +1,7 @@
 import { writable, derived } from 'svelte/store';
 
 const footer_height = 50
-const sub_header_height = 180
+const sub_header_height = 300
 
 export const window_dims = writable({
     window_width: 0,
@@ -31,7 +31,7 @@ export const dims = derived(
             header_height = 80
             p1_height = $window_dims.window_height - header_height - sub_header_height
             p2_height = $window_dims.window_height
-            p2_p_top = header_height
+            p2_p_top = header_height 
         }
         return {
             header_height,
